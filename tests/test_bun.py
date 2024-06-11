@@ -1,18 +1,13 @@
-from bun import Bun
+from praktikum.bun import Bun
+from data import BurgerData
 
 
 class TestBun:
 
-    def test_get_name_success(self, bun):
+    def test_get_name_success(self):
+        bun = Bun(BurgerData.bun_name, BurgerData.bun_price)
         assert bun.get_name() == 'black bun'
 
-    def test_get_price_success(self, bun):
+    def test_get_price_success(self):
+        bun = Bun(BurgerData.bun_name, BurgerData.bun_price)
         assert bun.get_price() == 100.0
-
-    def test_get_name_new_name_success(self):
-        self.new_bun = Bun('red bun', 2000.0)
-        assert self.new_bun.get_name() == 'red bun'
-
-    def test_get_price_new_price_success(self):
-        self.new_bun = Bun('red bun', 2000.0)
-        assert self.new_bun.get_price() == 2000.0

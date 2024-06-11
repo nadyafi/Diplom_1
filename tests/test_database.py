@@ -1,5 +1,6 @@
 import pytest
-import ingredient_types as it
+import praktikum.ingredient_types as it
+from praktikum.database import Database
 
 
 class TestDatabase:
@@ -9,7 +10,8 @@ class TestDatabase:
         ('white bun', 200),
         ('red bun', 300)
     ])
-    def test_available_buns(self, database, name, price, bun):
+    def test_available_buns(self, name, price):
+        database = Database()
         buns = database.available_buns()
         bun_names = [bun.get_name() for bun in buns]
         bun_prices = [bun.get_price() for bun in buns]
@@ -24,7 +26,8 @@ class TestDatabase:
         (it.INGREDIENT_TYPE_FILLING, 'dinosaur', 200),
         (it.INGREDIENT_TYPE_FILLING, 'sausage', 300)
     ])
-    def test_available_ingredients(self, database, ingredient_type, name, price, ingredient):
+    def test_available_ingredients(self, ingredient_type, name, price):
+        database = Database()
         ingredients = database.available_ingredients()
         ingredient_types = [ingredient.get_type() for ingredient in ingredients]
         ingredient_names = [ingredient.get_name() for ingredient in ingredients]
